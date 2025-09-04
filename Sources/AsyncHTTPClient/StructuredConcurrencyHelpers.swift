@@ -16,7 +16,6 @@
 // https://github.com/swiftlang/swift/issues/79285
 
 #if compiler(>=6.0)
-@inlinable
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 internal func asyncDo<R>(
     isolation: isolated (any Actor)? = #isolation,
@@ -49,7 +48,6 @@ internal func asyncDo<R>(
     return result
 }
 #else
-@inlinable
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 internal func asyncDo<R: Sendable>(
     _ body: () async throws -> R,

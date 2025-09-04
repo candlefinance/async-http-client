@@ -15,7 +15,6 @@
 import NIOCore
 
 extension NIOLoopBound {
-    @inlinable
     func execute(_ body: @Sendable @escaping (Value) -> Void) {
         if self.eventLoop.inEventLoop {
             body(self.value)

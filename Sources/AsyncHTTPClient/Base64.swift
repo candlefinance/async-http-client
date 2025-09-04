@@ -20,7 +20,6 @@
 extension String {
 
     /// Base64 encode a collection of UInt8 to a string, without the use of Foundation.
-    @inlinable
     init<Buffer: Collection>(base64Encoding bytes: Buffer)
     where Buffer.Element == UInt8 {
         self = Base64.encode(bytes: bytes)
@@ -31,7 +30,6 @@ extension String {
 @usableFromInline
 internal struct Base64: Sendable {
 
-    @inlinable
     static func encode<Buffer: Collection>(
         bytes: Buffer
     )
@@ -138,7 +136,6 @@ extension String {
     /// This is a backport of a proposed String initializer that will allow writing directly into an uninitialized String's backing memory.
     ///
     /// As this API does not exist prior to 5.3 on Linux, or on older Apple platforms, we fake it out with a pointer and accept the extra copy.
-    @inlinable
     init(
         backportUnsafeUninitializedCapacity capacity: Int,
         initializingUTF8With initializer: (_ buffer: UnsafeMutableBufferPointer<UInt8>) throws -> Int
@@ -160,7 +157,6 @@ extension String {
 
 extension String {
 
-    @inlinable
     init(
         customUnsafeUninitializedCapacity capacity: Int,
         initializingUTF8With initializer: (_ buffer: UnsafeMutableBufferPointer<UInt8>) throws -> Int

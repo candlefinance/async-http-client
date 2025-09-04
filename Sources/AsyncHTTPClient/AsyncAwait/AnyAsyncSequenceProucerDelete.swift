@@ -20,17 +20,14 @@ struct AnyAsyncSequenceProducerDelegate: NIOAsyncSequenceProducerDelegate {
     @usableFromInline
     var delegate: NIOAsyncSequenceProducerDelegate
 
-    @inlinable
     init<Delegate: NIOAsyncSequenceProducerDelegate>(_ delegate: Delegate) {
         self.delegate = delegate
     }
 
-    @inlinable
     func produceMore() {
         self.delegate.produceMore()
     }
 
-    @inlinable
     func didTerminate() {
         self.delegate.didTerminate()
     }

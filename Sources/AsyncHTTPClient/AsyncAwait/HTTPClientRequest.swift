@@ -97,7 +97,6 @@ extension HTTPClientRequest {
         @usableFromInline
         internal var mode: Mode
 
-        @inlinable
         internal init(_ mode: Mode) {
             self.mode = mode
         }
@@ -120,7 +119,6 @@ extension HTTPClientRequest.Body {
     /// The construction of the `ByteBuffer` will be delayed until it's needed.
     ///
     /// - parameter bytes: The bytes of the request body.
-    @inlinable
     @preconcurrency
     public static func bytes<Bytes: RandomAccessCollection & Sendable>(
         _ bytes: Bytes
@@ -145,7 +143,6 @@ extension HTTPClientRequest.Body {
     /// - parameters:
     ///     - bytes: The bytes of the request body.
     ///     - length: The length of the request body.
-    @inlinable
     @preconcurrency
     public static func bytes<Bytes: Sequence & Sendable>(
         _ bytes: Bytes,
@@ -160,7 +157,6 @@ extension HTTPClientRequest.Body {
     }
 
     /// internal method to test chunking
-    @inlinable
     @preconcurrency
     static func _bytes<Bytes: Sequence & Sendable>(
         _ bytes: Bytes,
@@ -238,7 +234,6 @@ extension HTTPClientRequest.Body {
     /// - parameters:
     ///     - bytes: The bytes of the request body.
     ///     - length: The length of the request body.
-    @inlinable
     @preconcurrency
     public static func bytes<Bytes: Collection & Sendable>(
         _ bytes: Bytes,
@@ -282,7 +277,6 @@ extension HTTPClientRequest.Body {
     /// - parameters:
     ///     - sequenceOfBytes: The bytes of the request body.
     ///     - length: The length of the request body.
-    @inlinable
     @preconcurrency
     public static func stream<SequenceOfBytes: AsyncSequence & Sendable>(
         _ sequenceOfBytes: SequenceOfBytes,
@@ -312,7 +306,6 @@ extension HTTPClientRequest.Body {
     /// - parameters:
     ///     - bytes: The bytes of the request body.
     ///     - length: The length of the request body.
-    @inlinable
     @preconcurrency
     public static func stream<Bytes: AsyncSequence & Sendable>(
         _ bytes: Bytes,
@@ -376,7 +369,6 @@ extension HTTPClientRequest.Body {
 extension HTTPClientRequest.Body: AsyncSequence {
     public typealias Element = ByteBuffer
 
-    @inlinable
     public func makeAsyncIterator() -> AsyncIterator {
         switch self.mode {
         case .asyncSequence(_, let makeAsyncIterator):
@@ -404,12 +396,10 @@ extension HTTPClientRequest.Body {
         @usableFromInline
         var storage: Storage
 
-        @inlinable
         init(storage: Storage) {
             self.storage = storage
         }
 
-        @inlinable
         public mutating func next() async throws -> ByteBuffer? {
             switch self.storage {
             case .byteBuffer(let buffer):

@@ -52,7 +52,6 @@ extension HTTPClient {
                 self.closure(data)
             }
 
-            @inlinable
             func writeChunks<Bytes: Collection>(
                 of bytes: Bytes,
                 maxChunkSize: Int
@@ -141,7 +140,6 @@ extension HTTPClient {
 
         @usableFromInline typealias StreamCallback = @Sendable (StreamWriter) -> EventLoopFuture<Void>
 
-        @inlinable
         init(contentLength: Int64?, stream: @escaping StreamCallback) {
             self.contentLength = contentLength.flatMap { $0 }
             self.stream = stream
@@ -190,7 +188,6 @@ extension HTTPClient {
         /// - parameters:
         ///     - bytes: Body binary representation.
         @preconcurrency
-        @inlinable
         public static func bytes<Bytes>(_ bytes: Bytes) -> Body
         where Bytes: RandomAccessCollection, Bytes: Sendable, Bytes.Element == UInt8 {
             Body(contentLength: Int64(bytes.count)) { writer in

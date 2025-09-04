@@ -20,18 +20,18 @@ struct AnyAsyncSequence<Element>: Sendable, AsyncSequence {
     @usableFromInline struct AsyncIterator: AsyncIteratorProtocol {
         @usableFromInline let nextCallback: AsyncIteratorNextCallback
 
-        @inlinable init(nextCallback: @escaping AsyncIteratorNextCallback) {
+        init(nextCallback: @escaping AsyncIteratorNextCallback) {
             self.nextCallback = nextCallback
         }
 
-        @inlinable mutating func next() async throws -> Element? {
+        mutating func next() async throws -> Element? {
             try await self.nextCallback()
         }
     }
 
     @usableFromInline var makeAsyncIteratorCallback: @Sendable () -> AsyncIteratorNextCallback
 
-    @inlinable init<SequenceOfBytes>(
+    init<SequenceOfBytes>(
         _ asyncSequence: SequenceOfBytes
     ) where SequenceOfBytes: AsyncSequence & Sendable, SequenceOfBytes.Element == Element {
         self.makeAsyncIteratorCallback = {
@@ -42,7 +42,7 @@ struct AnyAsyncSequence<Element>: Sendable, AsyncSequence {
         }
     }
 
-    @inlinable func makeAsyncIterator() -> AsyncIterator {
+    func makeAsyncIterator() -> AsyncIterator {
         .init(nextCallback: self.makeAsyncIteratorCallback())
     }
 }

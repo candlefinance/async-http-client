@@ -91,7 +91,7 @@ extension DeconstructedURL {
 
 #if !canImport(Darwin) && compiler(>=6.0)
 extension String {
-    @inlinable internal func trimIPv6Brackets() -> String {
+    internal func trimIPv6Brackets() -> String {
         var utf8View = self.utf8[...]
 
         var modified = false
