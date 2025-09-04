@@ -19,7 +19,6 @@ import NIOHTTP1
 import NIOSSL
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-@usableFromInline
 final class Transaction:
     // until NIOLockedValueBox learns `sending` because StateMachine cannot be Sendable
     @unchecked Sendable
@@ -336,7 +335,6 @@ extension Transaction: HTTPExecutableRequest {
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 extension Transaction: NIOAsyncSequenceProducerDelegate {
-    @usableFromInline
     func produceMore() {
         let action = self.state.withLockedValue { state in
             state.produceMore()
@@ -349,7 +347,6 @@ extension Transaction: NIOAsyncSequenceProducerDelegate {
         }
     }
 
-    @usableFromInline
     func didTerminate() {
         self.fail(HTTPClientError.cancelled)
     }

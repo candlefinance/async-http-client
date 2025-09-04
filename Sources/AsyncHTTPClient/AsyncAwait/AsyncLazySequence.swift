@@ -13,11 +13,10 @@
 //===----------------------------------------------------------------------===//
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-@usableFromInline
 struct AsyncLazySequence<Base: Sequence>: AsyncSequence {
-    @usableFromInline typealias Element = Base.Element
-    @usableFromInline struct AsyncIterator: AsyncIteratorProtocol {
-        @usableFromInline var iterator: Base.Iterator
+    typealias Element = Base.Element
+    struct AsyncIterator: AsyncIteratorProtocol {
+        var iterator: Base.Iterator
         init(iterator: Base.Iterator) {
             self.iterator = iterator
         }
@@ -27,7 +26,7 @@ struct AsyncLazySequence<Base: Sequence>: AsyncSequence {
         }
     }
 
-    @usableFromInline var base: Base
+    var base: Base
 
     init(base: Base) {
         self.base = base

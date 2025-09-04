@@ -12,13 +12,12 @@
 //
 //===----------------------------------------------------------------------===//
 
-@usableFromInline
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 struct AnyAsyncSequence<Element>: Sendable, AsyncSequence {
-    @usableFromInline typealias AsyncIteratorNextCallback = () async throws -> Element?
+    typealias AsyncIteratorNextCallback = () async throws -> Element?
 
-    @usableFromInline struct AsyncIterator: AsyncIteratorProtocol {
-        @usableFromInline let nextCallback: AsyncIteratorNextCallback
+    struct AsyncIterator: AsyncIteratorProtocol {
+        let nextCallback: AsyncIteratorNextCallback
 
         init(nextCallback: @escaping AsyncIteratorNextCallback) {
             self.nextCallback = nextCallback
@@ -29,7 +28,7 @@ struct AnyAsyncSequence<Element>: Sendable, AsyncSequence {
         }
     }
 
-    @usableFromInline var makeAsyncIteratorCallback: @Sendable () -> AsyncIteratorNextCallback
+    var makeAsyncIteratorCallback: @Sendable () -> AsyncIteratorNextCallback
 
     init<SequenceOfBytes>(
         _ asyncSequence: SequenceOfBytes

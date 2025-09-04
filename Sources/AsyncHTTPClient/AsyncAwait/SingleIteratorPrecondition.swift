@@ -17,10 +17,10 @@ import Atomics
 /// Makes sure that a consumer of this `AsyncSequence` only calls `makeAsyncIterator()` at most once.
 /// If `makeAsyncIterator()` is called multiple times, the program crashes.
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-@usableFromInline struct SingleIteratorPrecondition<Base: AsyncSequence>: AsyncSequence {
-    @usableFromInline let base: Base
-    @usableFromInline let didCreateIterator: ManagedAtomic<Bool> = .init(false)
-    @usableFromInline typealias Element = Base.Element
+struct SingleIteratorPrecondition<Base: AsyncSequence>: AsyncSequence {
+    let base: Base
+    let didCreateIterator: ManagedAtomic<Bool> = .init(false)
+    typealias Element = Base.Element
     init(base: Base) {
         self.base = base
     }

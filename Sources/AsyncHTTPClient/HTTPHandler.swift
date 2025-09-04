@@ -138,7 +138,7 @@ extension HTTPClient {
         /// Body chunk provider.
         public var stream: @Sendable (StreamWriter) -> EventLoopFuture<Void>
 
-        @usableFromInline typealias StreamCallback = @Sendable (StreamWriter) -> EventLoopFuture<Void>
+        typealias StreamCallback = @Sendable (StreamWriter) -> EventLoopFuture<Void>
 
         init(contentLength: Int64?, stream: @escaping StreamCallback) {
             self.contentLength = contentLength.flatMap { $0 }

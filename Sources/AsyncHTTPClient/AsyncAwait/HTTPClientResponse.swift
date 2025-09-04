@@ -121,7 +121,7 @@ extension HTTPClientResponse {
     public struct Body: AsyncSequence, Sendable {
         public typealias Element = ByteBuffer
         public struct AsyncIterator: AsyncIteratorProtocol {
-            @usableFromInline var storage: Storage.AsyncIterator
+            var storage: Storage.AsyncIterator
 
             init(storage: Storage.AsyncIterator) {
                 self.storage = storage
@@ -132,7 +132,7 @@ extension HTTPClientResponse {
             }
         }
 
-        @usableFromInline var storage: Storage
+        var storage: Storage
 
         public func makeAsyncIterator() -> AsyncIterator {
             .init(storage: self.storage.makeAsyncIterator())
@@ -188,7 +188,6 @@ extension HTTPClientResponse {
 }
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-@usableFromInline
 typealias TransactionBody = NIOThrowingAsyncSequenceProducer<
     ByteBuffer,
     Error,
@@ -198,7 +197,7 @@ typealias TransactionBody = NIOThrowingAsyncSequenceProducer<
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 extension HTTPClientResponse.Body {
-    @usableFromInline enum Storage: Sendable {
+    enum Storage: Sendable {
         case transaction(TransactionBody, expectedContentLength: Int?)
         case anyAsyncSequence(AnyAsyncSequence<ByteBuffer>)
     }
@@ -206,7 +205,7 @@ extension HTTPClientResponse.Body {
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 extension HTTPClientResponse.Body.Storage: AsyncSequence {
-    @usableFromInline typealias Element = ByteBuffer
+    typealias Element = ByteBuffer
 
     func makeAsyncIterator() -> AsyncIterator {
         switch self {
@@ -220,7 +219,7 @@ extension HTTPClientResponse.Body.Storage: AsyncSequence {
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 extension HTTPClientResponse.Body.Storage {
-    @usableFromInline enum AsyncIterator {
+    enum AsyncIterator {
         case transaction(TransactionBody.AsyncIterator)
         case anyAsyncSequence(AnyAsyncSequence<ByteBuffer>.AsyncIterator)
     }

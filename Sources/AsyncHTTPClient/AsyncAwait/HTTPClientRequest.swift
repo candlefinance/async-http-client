@@ -17,16 +17,13 @@ import NIOCore
 import NIOHTTP1
 import NIOSSL
 
-@usableFromInline
 let bagOfBytesToByteBufferConversionChunkSize = 1024 * 1024 * 4
 
 #if arch(arm) || arch(i386)
 // on 32-bit platforms we can't make use of a whole UInt32.max (as it doesn't fit in an Int)
-@usableFromInline
 let byteBufferMaxSize = Int.max
 #else
 // on 64-bit platforms we're good
-@usableFromInline
 let byteBufferMaxSize = Int(UInt32.max)
 #endif
 
@@ -69,7 +66,6 @@ extension HTTPClientRequest {
     /// This object encapsulates the difference between streamed HTTP request bodies and those bodies that
     /// are already entirely in memory.
     public struct Body: Sendable {
-        @usableFromInline
         internal enum Mode: Sendable {
             /// - parameters:
             ///     - length: complete body length.
@@ -94,7 +90,6 @@ extension HTTPClientRequest {
             case byteBuffer(ByteBuffer)
         }
 
-        @usableFromInline
         internal var mode: Mode
 
         internal init(_ mode: Mode) {
@@ -360,7 +355,6 @@ extension HTTPClientRequest.Body {
             .init(storage: .known(count))
         }
 
-        @usableFromInline
         internal var storage: RequestBodyLength
     }
 }
@@ -384,16 +378,13 @@ extension HTTPClientRequest.Body: AsyncSequence {
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
 extension HTTPClientRequest.Body {
     public struct AsyncIterator: AsyncIteratorProtocol {
-        @usableFromInline
         static let allocator = ByteBufferAllocator()
 
-        @usableFromInline
         enum Storage {
             case byteBuffer(ByteBuffer?)
             case makeNext((ByteBufferAllocator) async throws -> ByteBuffer?)
         }
 
-        @usableFromInline
         var storage: Storage
 
         init(storage: Storage) {

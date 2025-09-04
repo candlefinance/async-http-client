@@ -15,9 +15,7 @@
 import NIOCore
 
 @available(macOS 10.15, iOS 13.0, watchOS 6.0, tvOS 13.0, *)
-@usableFromInline
 struct AnyAsyncSequenceProducerDelegate: NIOAsyncSequenceProducerDelegate {
-    @usableFromInline
     var delegate: NIOAsyncSequenceProducerDelegate
 
     init<Delegate: NIOAsyncSequenceProducerDelegate>(_ delegate: Delegate) {
