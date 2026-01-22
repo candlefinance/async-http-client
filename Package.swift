@@ -39,7 +39,7 @@ let package = Package(
         .library(name: "CandleAsyncHTTPClient", targets: ["CandleAsyncHTTPClient"])
     ],
     dependencies: [
-        .package(url: "https://github.com/candlefinance/swift-nio.git", branch: "fix-candle-2.81.0"),
+        .package(url: "https://github.com/candlefinance/swift-nio.git", branch: "fix-candle-2.82.1"),
         .package(url: "https://github.com/candlefinance/swift-nio-ssl.git", branch: "fix-candle-2.30.0"),
         .package(url: "https://github.com/candlefinance/swift-nio-http2.git", branch: "fix-candle-1.38.0"),
         .package(url: "https://github.com/candlefinance/swift-nio-extras.git", branch: "fix-candle-1.29.0"),
