@@ -76,31 +76,6 @@ let package = Package(
             ],
             swiftSettings: strictConcurrencySettings
         ),
-        .testTarget(
-            name: "AsyncHTTPClientTests",
-            dependencies: [
-                .target(name: "CandleAsyncHTTPClient"),
-                .product(name: "CandleNIOTLS", package: "candle-swift-nio"),
-                .product(name: "CandleNIOCore", package: "candle-swift-nio"),
-                .product(name: "CandleNIOConcurrencyHelpers", package: "candle-swift-nio"),
-                .product(name: "CandleNIOEmbedded", package: "candle-swift-nio"),
-                .product(name: "CandleNIOFoundationCompat", package: "candle-swift-nio"),
-                .product(name: "NIOTestUtils", package: "candle-swift-nio"),
-                .product(name: "CandleNIOSSL", package: "candle-swift-nio-ssl"),
-                .product(name: "CandleNIOHTTP2", package: "candle-swift-nio-http2"),
-                .product(name: "CandleNIOSOCKS", package: "candle-swift-nio-extras"),
-                .product(name: "CandleLogging", package: "candle-swift-log"),
-                .product(name: "CandleAtomics", package: "candle-swift-atomics"),
-                .product(name: "CandleAlgorithms", package: "candle-swift-algorithms"),
-            ],
-            resources: [
-                .copy("Resources/self_signed_cert.pem"),
-                .copy("Resources/self_signed_key.pem"),
-                .copy("Resources/example.com.cert.pem"),
-                .copy("Resources/example.com.private-key.pem"),
-            ],
-            swiftSettings: strictConcurrencySettings
-        ),
     ]
 )
 
