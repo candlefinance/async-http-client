@@ -39,14 +39,14 @@ let package = Package(
         .library(name: "CandleAsyncHTTPClient", targets: ["CandleAsyncHTTPClient"])
     ],
     dependencies: [
-        .package(name: "candle-swift-nio", url: "https://github.com/candlefinance/swift-nio.git", branch: "fix-candle-2.82.1"),
-        .package(name: "candle-swift-nio-ssl", url: "https://github.com/candlefinance/swift-nio-ssl.git", branch: "fix-candle-2.33.0"),
-        .package(name: "candle-swift-nio-http2", url: "https://github.com/candlefinance/swift-nio-http2.git", branch: "fix-candle-1.38.0"),
-        .package(name: "candle-swift-nio-extras", url: "https://github.com/candlefinance/swift-nio-extras.git", branch: "fix-candle-1.29.0"),
-        .package(name: "candle-swift-nio-transport-services", url: "https://github.com/candlefinance/swift-nio-transport-services.git", branch: "fix-candle-1.24.0"),
-        .package(name: "candle-swift-log", url: "https://github.com/candlefinance/swift-log.git", branch: "fix-candle-1.6.3"),
-        .package(name: "candle-swift-atomics", url: "https://github.com/candlefinance/swift-atomics.git", branch: "fix-candle-1.2.0"),
-        .package(name: "candle-swift-algorithms", url: "https://github.com/candlefinance/swift-algorithms.git", branch: "fix-candle-1.2.1"),
+        .package(name: "candle-swift-nio", url: "https://github.com/candlefinance/candle-swift-nio.git", branch: "fix-candle-2.82.1"),
+        .package(name: "candle-swift-nio-ssl", url: "https://github.com/candlefinance/candle-swift-nio-ssl.git", branch: "fix-candle-2.33.0"),
+        .package(name: "candle-swift-nio-http2", url: "https://github.com/candlefinance/candle-swift-nio-http2.git", branch: "fix-candle-1.38.0"),
+        .package(name: "candle-swift-nio-extras", url: "https://github.com/candlefinance/candle-swift-nio-extras.git", branch: "fix-candle-1.29.0"),
+        .package(name: "candle-swift-nio-transport-services", url: "https://github.com/candlefinance/candle-swift-nio-transport-services.git", branch: "fix-candle-1.24.0"),
+        .package(name: "candle-swift-log", url: "https://github.com/candlefinance/candle-swift-log.git", branch: "fix-candle-1.6.3"),
+        .package(name: "candle-swift-atomics", url: "https://github.com/candlefinance/candle-swift-atomics.git", branch: "fix-candle-1.2.0"),
+        .package(name: "candle-swift-algorithms", url: "https://github.com/candlefinance/candle-swift-algorithms.git", branch: "fix-candle-1.2.1"),
     ],
     targets: [
         .target(
