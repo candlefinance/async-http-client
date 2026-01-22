@@ -34,7 +34,7 @@ let strictConcurrencySettings: [SwiftSetting] = {
 }()
 
 let package = Package(
-    name: "candle-async-http-client",
+    name: "async-http-client",
     products: [
         .library(name: "CandleAsyncHTTPClient", targets: ["CandleAsyncHTTPClient"])
     ],
@@ -59,20 +59,20 @@ let package = Package(
             name: "CandleAsyncHTTPClient",
             dependencies: [
                 .target(name: "CandleCAsyncHTTPClient"),
-                .product(name: "CandleNIO", package: "candle-swift-nio"),
-                .product(name: "CandleNIOTLS", package: "candle-swift-nio"),
-                .product(name: "CandleNIOCore", package: "candle-swift-nio"),
-                .product(name: "CandleNIOPosix", package: "candle-swift-nio"),
-                .product(name: "CandleNIOHTTP1", package: "candle-swift-nio"),
-                .product(name: "CandleNIOConcurrencyHelpers", package: "candle-swift-nio"),
-                .product(name: "CandleNIOHTTP2", package: "candle-swift-nio-http2"),
-                .product(name: "CandleNIOSSL", package: "candle-swift-nio-ssl"),
-                .product(name: "CandleNIOHTTPCompression", package: "candle-swift-nio-extras"),
-                .product(name: "CandleNIOSOCKS", package: "candle-swift-nio-extras"),
-                .product(name: "CandleNIOTransportServices", package: "candle-swift-nio-transport-services"),
-                .product(name: "CandleLogging", package: "candle-swift-log"),
-                .product(name: "CandleAtomics", package: "candle-swift-atomics"),
-                .product(name: "CandleAlgorithms", package: "candle-swift-algorithms"),
+                .product(name: "CandleNIO", package: "swift-nio"),
+                .product(name: "CandleNIOTLS", package: "swift-nio"),
+                .product(name: "CandleNIOCore", package: "swift-nio"),
+                .product(name: "CandleNIOPosix", package: "swift-nio"),
+                .product(name: "CandleNIOHTTP1", package: "swift-nio"),
+                .product(name: "CandleNIOConcurrencyHelpers", package: "swift-nio"),
+                .product(name: "CandleNIOHTTP2", package: "swift-nio-http2"),
+                .product(name: "CandleNIOSSL", package: "swift-nio-ssl"),
+                .product(name: "CandleNIOHTTPCompression", package: "swift-nio-extras"),
+                .product(name: "CandleNIOSOCKS", package: "swift-nio-extras"),
+                .product(name: "CandleNIOTransportServices", package: "swift-nio-transport-services"),
+                .product(name: "CandleLogging", package: "swift-log"),
+                .product(name: "CandleAtomics", package: "swift-atomics"),
+                .product(name: "CandleAlgorithms", package: "swift-algorithms"),
             ],
             swiftSettings: strictConcurrencySettings
         ),
