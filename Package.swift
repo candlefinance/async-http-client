@@ -34,7 +34,7 @@ let strictConcurrencySettings: [SwiftSetting] = {
 }()
 
 let package = Package(
-    name: "async-http-client",
+    name: "candle-async-http-client",
     products: [
         .library(name: "CandleAsyncHTTPClient", targets: ["CandleAsyncHTTPClient"])
     ],
