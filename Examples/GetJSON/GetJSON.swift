@@ -12,10 +12,10 @@
 //
 //===----------------------------------------------------------------------===//
 
-import AsyncHTTPClient
+import CandleAsyncHTTPClient
 import Foundation
-import NIOCore
-import NIOFoundationCompat
+import CandleNIOCore
+import CandleNIOFoundationCompat
 
 struct Comic: Codable {
     var num: Int

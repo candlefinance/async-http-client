@@ -41,25 +41,25 @@ let package = Package(
         .executableTarget(
             name: "GetHTML",
             dependencies: [
-                .product(name: "AsyncHTTPClient", package: "async-http-client"),
-                .product(name: "NIOCore", package: "swift-nio"),
+                .product(name: "CandleAsyncHTTPClient", package: "async-http-client"),
+                .product(name: "CandleNIOCore", package: "swift-nio"),
             ],
             path: "GetHTML"
         ),
         .executableTarget(
             name: "GetJSON",
             dependencies: [
-                .product(name: "AsyncHTTPClient", package: "async-http-client"),
-                .product(name: "NIOCore", package: "swift-nio"),
-                .product(name: "NIOFoundationCompat", package: "swift-nio"),
+                .product(name: "CandleAsyncHTTPClient", package: "async-http-client"),
+                .product(name: "CandleNIOCore", package: "swift-nio"),
+                .product(name: "CandleNIOFoundationCompat", package: "swift-nio"),
             ],
             path: "GetJSON"
         ),
         .executableTarget(
             name: "StreamingByteCounter",
             dependencies: [
-                .product(name: "AsyncHTTPClient", package: "async-http-client"),
-                .product(name: "NIOCore", package: "swift-nio"),
+                .product(name: "CandleAsyncHTTPClient", package: "async-http-client"),
+                .product(name: "CandleNIOCore", package: "swift-nio"),
             ],
             path: "StreamingByteCounter"
         ),

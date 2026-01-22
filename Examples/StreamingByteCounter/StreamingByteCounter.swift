@@ -12,8 +12,8 @@
 //
 //===----------------------------------------------------------------------===//
 
-import AsyncHTTPClient
-import NIOCore
+import CandleAsyncHTTPClient
+import CandleNIOCore
 
 @main
 struct StreamingByteCounter {

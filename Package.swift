@@ -36,7 +36,7 @@ let strictConcurrencySettings: [SwiftSetting] = {
 let package = Package(
     name: "async-http-client",
     products: [
-        .library(name: "AsyncHTTPClient", targets: ["AsyncHTTPClient"])
+        .library(name: "CandleAsyncHTTPClient", targets: ["CandleAsyncHTTPClient"])
     ],
     dependencies: [
         .package(url: "https://github.com/candlefinance/swift-nio.git", branch: "fix-candle-2.81.0"),
@@ -50,48 +50,48 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "CAsyncHTTPClient",
+            name: "CandleCAsyncHTTPClient",
             cSettings: [
                 .define("_GNU_SOURCE")
             ]
         ),
         .target(
-            name: "AsyncHTTPClient",
+            name: "CandleAsyncHTTPClient",
             dependencies: [
-                .target(name: "CAsyncHTTPClient"),
-                .product(name: "NIO", package: "swift-nio"),
-                .product(name: "NIOTLS", package: "swift-nio"),
-                .product(name: "NIOCore", package: "swift-nio"),
-                .product(name: "NIOPosix", package: "swift-nio"),
-                .product(name: "NIOHTTP1", package: "swift-nio"),
-                .product(name: "NIOConcurrencyHelpers", package: "swift-nio"),
-                .product(name: "NIOHTTP2", package: "swift-nio-http2"),
-                .product(name: "NIOSSL", package: "swift-nio-ssl"),
-                .product(name: "NIOHTTPCompression", package: "swift-nio-extras"),
-                .product(name: "NIOSOCKS", package: "swift-nio-extras"),
-                .product(name: "NIOTransportServices", package: "swift-nio-transport-services"),
-                .product(name: "Logging", package: "swift-log"),
-                .product(name: "Atomics", package: "swift-atomics"),
-                .product(name: "Algorithms", package: "swift-algorithms"),
+                .target(name: "CandleCAsyncHTTPClient"),
+                .product(name: "CandleNIO", package: "swift-nio"),
+                .product(name: "CandleNIOTLS", package: "swift-nio"),
+                .product(name: "CandleNIOCore", package: "swift-nio"),
+                .product(name: "CandleNIOPosix", package: "swift-nio"),
+                .product(name: "CandleNIOHTTP1", package: "swift-nio"),
+                .product(name: "CandleNIOConcurrencyHelpers", package: "swift-nio"),
+                .product(name: "CandleNIOHTTP2", package: "swift-nio-http2"),
+                .product(name: "CandleNIOSSL", package: "swift-nio-ssl"),
+                .product(name: "CandleNIOHTTPCompression", package: "swift-nio-extras"),
+                .product(name: "CandleNIOSOCKS", package: "swift-nio-extras"),
+                .product(name: "CandleNIOTransportServices", package: "swift-nio-transport-services"),
+                .product(name: "CandleLogging", package: "swift-log"),
+                .product(name: "CandleAtomics", package: "swift-atomics"),
+                .product(name: "CandleAlgorithms", package: "swift-algorithms"),
             ],
             swiftSettings: strictConcurrencySettings
         ),
         .testTarget(
             name: "AsyncHTTPClientTests",
             dependencies: [
-                .target(name: "AsyncHTTPClient"),
-                .product(name: "NIOTLS", package: "swift-nio"),
-                .product(name: "NIOCore", package: "swift-nio"),
-                .product(name: "NIOConcurrencyHelpers", package: "swift-nio"),
-                .product(name: "NIOEmbedded", package: "swift-nio"),
-                .product(name: "NIOFoundationCompat", package: "swift-nio"),
+                .target(name: "CandleAsyncHTTPClient"),
+                .product(name: "CandleNIOTLS", package: "swift-nio"),
+                .product(name: "CandleNIOCore", package: "swift-nio"),
+                .product(name: "CandleNIOConcurrencyHelpers", package: "swift-nio"),
+                .product(name: "CandleNIOEmbedded", package: "swift-nio"),
+                .product(name: "CandleNIOFoundationCompat", package: "swift-nio"),
                 .product(name: "NIOTestUtils", package: "swift-nio"),
-                .product(name: "NIOSSL", package: "swift-nio-ssl"),
-                .product(name: "NIOHTTP2", package: "swift-nio-http2"),
-                .product(name: "NIOSOCKS", package: "swift-nio-extras"),
-                .product(name: "Logging", package: "swift-log"),
-                .product(name: "Atomics", package: "swift-atomics"),
-                .product(name: "Algorithms", package: "swift-algorithms"),
+                .product(name: "CandleNIOSSL", package: "swift-nio-ssl"),
+                .product(name: "CandleNIOHTTP2", package: "swift-nio-http2"),
+                .product(name: "CandleNIOSOCKS", package: "swift-nio-extras"),
+                .product(name: "CandleLogging", package: "swift-log"),
+                .product(name: "CandleAtomics", package: "swift-atomics"),
+                .product(name: "CandleAlgorithms", package: "swift-algorithms"),
             ],
             resources: [
                 .copy("Resources/self_signed_cert.pem"),
