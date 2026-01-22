@@ -40,7 +40,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/candlefinance/swift-nio.git", branch: "fix-candle-2.82.1"),
-        .package(url: "https://github.com/candlefinance/swift-nio-ssl.git", branch: "fix-candle-2.30.0"),
+        .package(url: "https://github.com/candlefinance/swift-nio-ssl.git", branch: "fix-candle-2.33.0"),
         .package(url: "https://github.com/candlefinance/swift-nio-http2.git", branch: "fix-candle-1.38.0"),
         .package(url: "https://github.com/candlefinance/swift-nio-extras.git", branch: "fix-candle-1.29.0"),
         .package(url: "https://github.com/candlefinance/swift-nio-transport-services.git", branch: "fix-candle-1.24.0"),
